@@ -80,14 +80,12 @@
 
     <script>
         function handleLogin(event) {
-            event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+            event.preventDefault(); 
             const role = document.getElementById('role').value;
 
             if (role === 'center') {
-                window.location.href = 'teacher_school_list.html'; // الانتقال إلى صفحة الأزرار
-            } else {
-                alert('Please select Center to proceed.'); // رسالة تنبيه في حال اختيار غير مركز
-            }
+                window.location.href = 'teacher_school_list.html';
+            } 
         }
     </script>
 
