@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher School List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* المسافة بين الأزرار */
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .teacher-list { background-color: #007bff; } /* Blue */
+        .school-list { background-color: #28a745; } /* Green */
+        .course-list { background-color: #ffc107; } /* Yellow */
+        .add-course { background-color: #17a2b8; } /* Cyan */
+        .back-button { background-color: #6c757d; } /* Gray */
+
+        .button:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+    <h2>Teacher School List</h2>
+    <div class="button-container">
+        <button class="button teacher-list" onclick="window.location.href='teacher_list.html'">Teacher List</button>
+        <button class="button school-list" onclick="window.location.href='school_list.html'">School List</button>
+        <button class="button course-list" onclick="window.location.href='course_list.html'">Course List</button>
+        <button class="button add-course" onclick="window.location.href='add_course.html'">Add Course</button> <!-- زر إضافة دورة -->
+    </div>
+    <button class="button back-button" onclick="window.location.href='login.html'">Back</button>
+
+</body>
+</html>

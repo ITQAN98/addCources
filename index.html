@@ -25,7 +25,7 @@
             text-align: center;
         }
 
-        h2, h3 {
+        h2 {
             margin-bottom: 20px;
             color: #333;
         }
@@ -53,17 +53,13 @@
         button:hover {
             background-color: #0056b3;
         }
-
-        .hidden-section {
-            display: none;
-        }
     </style>
 </head>
 <body>
 
     <div class="login-container">
         <h2>Login</h2>
-        <form action="login.php" method="POST">
+        <form id="loginForm" onsubmit="return handleLogin(event)">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
@@ -71,7 +67,7 @@
             <input type="password" id="password" name="password" required>
 
             <label for="role">Select Account Type:</label>
-            <select id="role" name="role" onchange="toggleSections()" required>
+            <select id="role" name="role" required>
                 <option value="">-- Select --</option>
                 <option value="teacher">Teacher</option>
                 <option value="center">Center</option>
@@ -80,94 +76,18 @@
 
             <button type="submit">Login</button>
         </form>
-
-        <!-- Teacher List Section (only visible when 'Center' is selected) -->
-        <div id="teacherListContainer" class="hidden-section">
-            <h3>Manage Teacher List</h3>
-            <button onclick="addTeacher()">Add Teacher</button>
-            <button onclick="editTeacher()">Edit Teacher</button>
-        </div>
-
-        <!-- School List Section (only visible when 'Center' is selected) -->
-        <div id="schoolListContainer" class="hidden-section">
-            <h3>View School List</h3>
-            <button onclick="viewSchoolList()">View Schools</button>
-        </div>
-
-        <!-- Courses List Section (only visible when 'Center' is selected) -->
-        <div id="coursesListContainer" class="hidden-section">
-            <h3>Manage Courses List</h3>
-            <button onclick="addCourse()">Add Course</button>
-            <button onclick="editCourse()">Edit Course</button>
-        </div>
-
-        <!-- Updated last section for viewing courses -->
-        <div id="viewCoursesContainer" class="hidden-section">
-            <h3>View Courses List</h3>
-            <button onclick="viewCourses()">View Courses</button>
-        </div>
     </div>
 
     <script>
-        // Toggle visibility of sections based on selected role
-        function toggleSections() {
+        function handleLogin(event) {
+            event.preventDefault(); // منع الإرسال الافتراضي للنموذج
             const role = document.getElementById('role').value;
 
-            // Hide all sections initially
-            document.getElementById('teacherListContainer').style.display = 'none';
-            document.getElementById('schoolListContainer').style.display = 'none';
-            document.getElementById('coursesListContainer').style.display = 'none';
-            document.getElementById('viewCoursesContainer').style.display = 'none';
-
-            // Show specific sections if 'Center' is selected
             if (role === 'center') {
-                document.getElementById('teacherListContainer').style.display = 'block';
-                document.getElementById('schoolListContainer').style.display = 'block';
-                document.getElementById('coursesListContainer').style.display = 'block';
-                document.getElementById('viewCoursesContainer').style.display = 'block';
+                window.location.href = 'teacher_school_list.html'; // الانتقال إلى صفحة الأزرار
+            } else {
+                alert('Please select Center to proceed.'); // رسالة تنبيه في حال اختيار غير مركز
             }
-        }
-
-        // Function to add a teacher
-        function addTeacher() {
-            alert("Redirecting to add teacher page...");
-            // You can replace the alert with the actual redirection to the teacher page
-            // window.location.href = 'add-teacher.html';
-        }
-
-        // Function to edit a teacher
-        function editTeacher() {
-            alert("Redirecting to edit teacher page...");
-            // You can replace the alert with the actual redirection to the edit teacher page
-            // window.location.href = 'edit-teacher.html';
-        }
-
-        // Function to view the school list
-        function viewSchoolList() {
-            alert("Redirecting to view school list...");
-            // You can replace the alert with the actual redirection to the school list page
-            // window.location.href = 'view-schools.html';
-        }
-
-        // Function to add a course
-        function addCourse() {
-            alert("Redirecting to add course page...");
-            // You can replace the alert with the actual redirection to the add course page
-            // window.location.href = 'add-course.html';
-        }
-
-        // Function to edit a course
-        function editCourse() {
-            alert("Redirecting to edit course page...");
-            // You can replace the alert with the actual redirection to the edit course page
-            // window.location.href = 'edit-course.html';
-        }
-
-        // Function to view the courses list
-        function viewCourses() {
-            alert("Redirecting to view courses page...");
-            // You can replace the alert with the actual redirection to the view courses page
-            // window.location.href = 'view-courses.html';
         }
     </script>
 
